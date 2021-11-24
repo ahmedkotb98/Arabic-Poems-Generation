@@ -164,9 +164,7 @@ def interact_model(
 
 def generate_result(context_tokens, enc, output, context, nsamples=1, batch_size=1, sess=tf.get_default_session()):
     for _ in range(nsamples // batch_size):
-        out = sess.run(output, feed_dict={
-            context: [context_tokens for _ in range(batch_size)]
-        })[:, len(context_tokens):]
+        out = sess.run[:, len(context_tokens):]
         for i in range(batch_size):
             yield out[i]
 

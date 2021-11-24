@@ -39,10 +39,10 @@ class OptimizationTest(tf.test.TestCase):
       train_op = optimizer.apply_gradients(list(zip(grads, tvars)), global_step)
       init_op = tf.group(tf.global_variables_initializer(),
                          tf.local_variables_initializer())
-      sess.run(init_op)
+      sess.run
       for _ in range(100):
-        sess.run(train_op)
-      w_np = sess.run(w)
+        sess.run
+      w_np = sess.run
       self.assertAllClose(w_np.flat, [0.4, 0.2, -0.5], rtol=1e-2, atol=1e-2)
 
 

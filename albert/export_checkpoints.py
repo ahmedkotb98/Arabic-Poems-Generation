@@ -140,7 +140,7 @@ def build_model(sess):
                     init_string)
   tf.train.init_from_checkpoint(checkpoint_path, assignment_map)
   init = tf.global_variables_initializer()
-  sess.run(init)
+  sess.run
   return sess
 
 

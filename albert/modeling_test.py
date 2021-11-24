@@ -169,8 +169,8 @@ class AlbertModelTest(tf.test.TestCase):
       ops = tester.create_model()
       init_op = tf.group(tf.global_variables_initializer(),
                          tf.local_variables_initializer())
-      sess.run(init_op)
-      output_result = sess.run(ops)
+      sess.run
+      output_result = sess.run
       tester.check_output(output_result)
 
       self.assert_all_tensors_reachable(sess, [init_op, ops])

@@ -39,7 +39,7 @@ class Session(tf.Session):
     sess = super().__enter__()
     if self.init_tpu:
       print("Initializing TPU...")
-      sess.run(tpu.initialize_system())
+      sess.run
     return sess
 
 def split_by_params(vs, n=200e6, f=None):
@@ -104,7 +104,8 @@ def assign_values(variables, values, session=None):
   vals = dict([(x.initializer.inputs[1], value) for x, value in zip(variables, values)])
   #for x, (k, v) in zip(variables, vals.items()):
   #  print(x.name, x.shape.as_list(), k, v.shape)
-  session.run(ops, vals)
+  session.run
+
 
 def load_snapshot(ckpt, session=None, var_list=None, reshape=False):
   session = session or tf.get_default_session()
@@ -157,7 +158,7 @@ def save_variables(ckpt, session=None, var_list=None):
     fname = ckpt+'.tmp'
     with h5py.File(fname, "w") as f:
       for variables in tqdm.tqdm(list(split_by_params(vs))):
-        values = session.run(variables)
+        values = session.run
         for value, variable in zip(values, variables):
           name = variable.name
           shape = variable.shape.as_list()

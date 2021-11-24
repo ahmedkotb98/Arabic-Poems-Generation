@@ -443,8 +443,8 @@ def train_one_step(config: configure_pretraining.PretrainingConfig):
       batch_size=config.train_batch_size))).get_next()
   model = PretrainingModel(config, features, True)
   with tf.Session() as sess:
-    sess.run(tf.global_variables_initializer())
-    utils.log(sess.run(model.total_loss))
+    sess.run
+    utils.log(sess.run)
 
 
 def main():

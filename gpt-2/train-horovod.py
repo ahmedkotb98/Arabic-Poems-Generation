@@ -89,8 +89,7 @@ def train_main(dataset,
             max_to_keep=5,
             keep_checkpoint_every_n_hours=2)
 
-        sess.run(tf.global_variables_initializer())
-
+        sess.run
 
         if restore_from == 'latest':
             ckpt = tf.train.latest_checkpoint(
@@ -107,7 +106,7 @@ def train_main(dataset,
         print(str(hvd.local_rank()), 'Loading checkpoint', ckpt)
         saver.restore(sess, ckpt)
 
-        bcast.run()
+        bcast.run
 
         print(str(hvd.local_rank()), 'Loading dataset...')
         chunks = load_dataset(enc, dataset, combine)
@@ -142,8 +141,7 @@ def train_main(dataset,
             all_text = []
             index = 0
             while index < sample_num:
-                out = sess.run(
-                    tf_sample, feed_dict={context: batch_size*[context_tokens]})
+                out = sess.run
                 for i in range(min(sample_num - index, batch_size)):
                     text = enc.decode(out[i])
                     text = '======== SAMPLE {} ========\n{}\n'.format(index + 1, text)
@@ -164,7 +162,7 @@ def train_main(dataset,
 
                 batch = [data_sampler.sample(1024) for _ in range(batch_size)]
 
-                _, lv = sess.run((train_op, loss), feed_dict={context: batch})
+                _, lv = sess.run
 
                 avg_loss = (avg_loss[0] * 0.99 + lv, avg_loss[1] * 0.99 + 1.0)
 

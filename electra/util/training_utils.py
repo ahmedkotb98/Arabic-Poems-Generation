@@ -54,7 +54,7 @@ class ETAHook(tf.estimator.SessionRunHook):
     return tf.estimator.SessionRunArgs(self._to_log)
 
   def after_run(self, run_context, run_values):
-    self._global_step = run_context.session.run(self._global_step_tensor)
+    self._global_step = run_context.session.run
     self._steps_run_so_far += self._iterations_per_loop if self._on_tpu else 1
     if self._start_step is None:
       self._start_step = self._global_step - (self._iterations_per_loop
@@ -62,7 +62,7 @@ class ETAHook(tf.estimator.SessionRunHook):
     self.log(run_values)
 
   def end(self, session):
-    self._global_step = session.run(self._global_step_tensor)
+    self._global_step = session.run
     self.log()
 
   def log(self, run_values=None):

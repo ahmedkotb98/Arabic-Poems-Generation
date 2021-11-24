@@ -78,7 +78,7 @@ def sample_model(
 
         generated = 0
         while nsamples == 0 or generated < nsamples:
-            out = sess.run(output)
+            out = sess.run
             for i in range(batch_size):
                 generated += 1
                 text = enc.decode(out[i])

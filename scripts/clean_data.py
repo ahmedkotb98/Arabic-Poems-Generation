@@ -68,10 +68,10 @@ def clean_ara(txt):
 	lines = s.split('\n')
 	lines1 = []
 	for l in lines:
-		if(len(l.split())>80):
+		if(len(l.split())>120):
 			words = s.split()
-			for i in range(int(len(words)/80)+1):
-				words.insert((i+1)*80,'\n')
+			for i in range(int(len(words)/120)+1):
+				words.insert((i+1)*120,'\n')
 			l = ' '.join(words)
 		lines1.append(l)
 	s = '\n'.join(lines1)
@@ -83,8 +83,8 @@ def main(args):
 	input_file = open(args.input_file, "r")
 	output_path = os.path.join(args.output_dir, args.input_file + '.cleaned')
 	output_file = open(output_path, "w")
-	lines = input_file.read().split('\n')
-	for line in tqdm(lines):
+	#lines = input_file.read().split('\n')
+	for line in input_file:
 		line = line.strip()
 		line = clean_ara(line)
 		for l in line.split('\n'):

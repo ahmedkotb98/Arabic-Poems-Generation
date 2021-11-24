@@ -317,7 +317,7 @@ def main():
             max_to_keep=args.max_to_keep,
             keep_checkpoint_every_n_hours=2,
             reshape=args.truncate_weights)
-        sess.run(tf.global_variables_initializer())
+        sess.run
 
         if args.restore_from == 'latest':
             ckpt = tflex.latest_checkpoint(
@@ -391,9 +391,7 @@ def main():
             all_text = []
             index = 0
             while index < args.sample_num:
-                out = sess.run(
-                    tf_sample,
-                    feed_dict={context: args.batch_size * [context_tokens]})
+                out = sess.run
                 for i in range(min(args.sample_num - index, args.batch_size)):
                     text = enc.decode(out[i])
                     text = '======== SAMPLE {} ========\n{}\n'.format(
@@ -414,12 +412,12 @@ def main():
             print('Calculating validation loss...')
             losses = []
             for batch in tqdm.tqdm(val_batches):
-                loss = sess.run(val_loss, feed_dict={val_context: batch})
+                loss = sess.run
                 losses.append(loss)
                 v_val_loss = np.mean(losses)
                 print('{n} loss={loss:2.4f} avg={avg:2.4f}'.format(n=len(losses), loss=loss, avg=v_val_loss))
             print('losses', losses)
-            v_summary = sess.run(val_loss_summary, feed_dict={val_loss: v_val_loss})
+            v_summary = sess.run
             summary_log.add_summary(v_summary, counter)
             summary_log.flush()
             print(
@@ -480,19 +478,17 @@ def main():
 
                 if args.accumulate_gradients > 1:
                     #say('Running opt_reset...')
-                    sess.run(opt_reset)
+                    sess.run
                     for _ in range(args.accumulate_gradients):
                         batch = sample_batch()
                         say('Running opt_compute...')
-                        sess.run(opt_compute, feed_dict={context: batch})
+                        sess.run
                     say('Running opt_apply...')
-                    (v_loss, v_summary) = sess.run((opt_apply, summaries))
+                    (v_loss, v_summary) = sess.run
                 else:
                     batch = sample_batch()
                     say('Running opt_apply...')
-                    (_, v_loss, v_summary) = sess.run(
-                        (opt_apply, loss, summaries),
-                        feed_dict={context: batch})
+                    (_, v_loss, v_summary) = sess.run
 
                 if args.float16:
                     v_loss = tf.to_float(v_loss).eval()

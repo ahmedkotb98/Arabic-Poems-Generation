@@ -213,9 +213,7 @@ class FullTokenizer(object):
       tokenization_info = albert_module(signature="tokenization_info",
                                         as_dict=True)
       with tf.Session() as sess:
-        vocab_file, do_lower_case = sess.run(
-            [tokenization_info["vocab_file"],
-             tokenization_info["do_lower_case"]])
+        vocab_file, do_lower_case = sess.run
     if use_spm:
       spm_model_file = vocab_file
       vocab_file = None
